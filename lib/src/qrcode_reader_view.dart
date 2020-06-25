@@ -15,8 +15,15 @@ class QrcodeReaderView extends StatefulWidget {
   final double scanBoxRatio;
   final Color boxLineColor;
   final Widget helpWidget;
+  final Map<String> strings;
+  const Map<String> defaultStrings = {
+    codeInFrame: "Please place the code inside the frame",
+    noPermission: "No permission to access the camera",
+  };
+
   QrcodeReaderView({
     Key key,
+    this.strings,
     @required this.onScan,
     this.headerWidget,
     this.boxLineColor = Colors.cyanAccent,
@@ -26,6 +33,10 @@ class QrcodeReaderView extends StatefulWidget {
 
   @override
   QrcodeReaderViewState createState() => new QrcodeReaderViewState();
+
+  String getString(String key) {
+    return strings.containsKey(key) ? strings[key] : defaultStrings[key];
+  }
 }
 
 /// 扫码后的后续操作
@@ -54,7 +65,7 @@ class QrcodeReaderViewState extends State<QrcodeReaderView>
         });
       } else {
         Navigator.of(context)
-            .pop('无权访问摄像头/No permissions to access the camera');
+            .pop(widget.getString("noPermission"));
       }
     });
   }
@@ -173,7 +184,7 @@ class QrcodeReaderViewState extends State<QrcodeReaderView>
               final qrScanSize = constraints.maxWidth * widget.scanBoxRatio;
               final mediaQuery = MediaQuery.of(context);
               if (constraints.maxHeight < qrScanSize * 1.5) {
-                print("建议高度与扫码区域高度比大于1.5");
+                print("constraints.maxHeight < qrScanSize * 1.5");
               }
               return Stack(
                 children: <Widget>[
@@ -214,7 +225,7 @@ class QrcodeReaderViewState extends State<QrcodeReaderView>
                         style: TextStyle(color: Colors.white),
                         child: widget.helpWidget ??
                             Text(
-                              "请将二维码置于方框中 \n please place the code inside the frame",
+                              widget.getString("codeInFrame"),
                               textAlign: TextAlign.center,
                             ),
                       ),
