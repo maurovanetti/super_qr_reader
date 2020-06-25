@@ -23,8 +23,8 @@ class _ScanViewState extends State<ScanView> {
     return new Scaffold(
       body: QrcodeReaderView(
         strings: {
-          codeInFrame: "Inquadra il QR code",
-          noPermission: "Manca il permesso di utilizzo della fotocamera"
+          'codeInFrame': "Inquadra il QR code",
+          'noPermission': "Manca il permesso di utilizzo della fotocamera"
         },
         key: _key,
         onScan: onScan,

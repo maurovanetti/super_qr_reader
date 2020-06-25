@@ -65,7 +65,7 @@ class QrcodeReaderViewState extends State<QrcodeReaderView>
         });
       } else {
         Navigator.of(context)
-            .pop(widget.getString("noPermission"));
+            .pop(widget.getString('noPermission'));
       }
     });
   }
@@ -225,7 +225,7 @@ class QrcodeReaderViewState extends State<QrcodeReaderView>
                         style: TextStyle(color: Colors.white),
                         child: widget.helpWidget ??
                             Text(
-                              widget.getString("codeInFrame"),
+                              widget.getString('codeInFrame'),
                               textAlign: TextAlign.center,
                             ),
                       ),
