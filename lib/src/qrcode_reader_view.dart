@@ -15,13 +15,8 @@ class QrcodeReaderView extends StatefulWidget {
   final double scanBoxRatio;
   final Color boxLineColor;
   final Widget helpWidget;
-<<<<<<< HEAD
   final Map<String, String> strings;
   final Map<String, String> defaultStrings = {
-=======
-  final Map<String> strings;
-  const Map<String> defaultStrings = {
->>>>>>> it-IT
     codeInFrame: "Please place the code inside the frame",
     noPermission: "No permission to access the camera",
   };
